@@ -2,11 +2,11 @@ package bank;
 
 import java.math.BigDecimal;
 
-public class Main {
+public class BankDemo {
     public static void main(String[] args) {
         Bank bank = new Bank();
         SavingsAccount priya = new SavingsAccount("S-1", "Priya");
-        CurrentAccount shop = new CurrentAccount("C-1", "Kumar Stores", new BigDecimal("5000"));
+        CurrentAccount shop = new CurrentAccount("C-1", "Kumar Stores");
         bank.open(priya);
         bank.open(shop);
         try {

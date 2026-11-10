@@ -66,6 +66,14 @@ class AccountTest {
     }
 
     @Test
+    void currentAccountOverdraftDefaultsTo5000() throws BankException {
+        CurrentAccount shop = new CurrentAccount("C2", "Kumar Stores");
+        shop.withdraw(rs("5000"));
+        assertEquals(rs("-5000.00"), shop.getBalance());
+        assertThrows(InsufficientFundsException.class, () -> shop.withdraw(rs("0.01")));
+    }
+
+    @Test
     void transferMovesMoney() throws BankException {
         bank.transfer("S", "C", rs("750.25"));
         assertEquals(rs("2249.75"), savings.getBalance());

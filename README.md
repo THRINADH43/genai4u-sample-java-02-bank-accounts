@@ -10,7 +10,7 @@ You need Java 17+ and Maven.
 ```
 mvn test
 mvn compile
-java -cp target/classes bank.Main
+java -cp target/classes bank.BankDemo
 ```
 
 ## Design
@@ -18,7 +18,8 @@ java -cp target/classes bank.Main
 - `Account` is abstract. It keeps the balance private and does deposits and withdrawals.
   Each subclass answers one question, `availableToWithdraw()`, so the rules live in one place.
 - `SavingsAccount` keeps a minimum balance of Rs 1,000 and allows 3 withdrawals a month.
-- `CurrentAccount` may go below zero down to its overdraft limit.
+- `CurrentAccount` may go below zero down to its overdraft limit: Rs 5,000 by default, or another
+  limit given to the constructor.
 - `Bank` holds the accounts and does transfers. It withdraws first, so a refused transfer
   changes nothing.
 
@@ -36,5 +37,5 @@ exactly 0.30 (there is a test for this).
 
 ## Tests
 
-`src/test/java/bank/AccountTest.java` has 9 JUnit 5 tests covering normal deposits,
+`src/test/java/bank/AccountTest.java` has 10 JUnit 5 tests covering normal deposits,
 withdrawals and transfers and the failing cases above.
